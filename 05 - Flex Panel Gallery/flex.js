@@ -1,13 +1,13 @@
 const panels = document.querySelectorAll('.panel')
 
-function togglePanel() {
+function toggleSize() {
   this.classList.toggle('open')
+  this.addEventListener('transitionend', toggleText)
 }
-function slideText(ev) {
+function toggleText(ev) {
   if (ev.propertyName.includes('flex')) {
     this.classList.toggle('open-active')
   }
 }
 
-panels.forEach(panel => panel.addEventListener('click', togglePanel))
-panels.forEach(panel => panel.addEventListener('transitionend', slideText))
+panels.forEach(panel => panel.addEventListener('click', toggleSize))
