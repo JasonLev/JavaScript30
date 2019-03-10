@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+</head>
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+
+    // Regular
+    console.log("this is a log entry to the console!");
+    // Interpolated
+    console.log("this message is %s", 'interpolated!');
+
+    // Styled
+    console.log("part of this message %c is styled!", "font-size: 40px; color: purple");
+    // warning!
+    console.warn("this message is a warning!");
+    // Error :|
+    console.error("you really made a mistake");
+    // Info
+    console.info("here's some information...");
+    // Testing
+    const paragraph = document.querySelector('p')
+    console.assert(paragraph.classList.contains("purpleText"), "incorrect")
+    // clearing
+    console.clear();
+    // Viewing DOM Elements
+    console.log(paragraph);
+    console.dir(paragraph);
+    // Grouping together
+    dogs.forEach(dog => {
+      console.group(dog.name);
+      console.log(`This dog is named ${dog.name}`);
+      console.log(dog.age);
+      console.groupEnd(dog.name)
+
+      console.groupCollapsed(dog.name);
+      console.log(`This dog is named ${dog.name}`);
+      console.log(dog.age);
+      console.groupEnd(dog.name)
+    })
+    // counting
+    console.count('something')
+    console.count('something')
+    console.count('something')
+    console.count('something')
+    console.count('something')
+    console.count('something')
+    console.count('something')
+    console.count('something')
+    console.count('something')
+    console.count('something')
+    console.count(paragraph)
+    console.count(document)
+    console.count(document.querySelector('title'))
+    // timing
+    console.time('fetching Github data');
+    fetch('https://api.github.com/users/jasonlev')
+      .then(res => {
+        if (res.ok) {return res.json()}
+        throw new Error('Network Error! Response was not ok!')
+      })
+      .then(data => {
+        console.log(data);
+        console.timeEnd('fetching Github data');
+      })
+      .catch(error => console.error("This was the error:", error))
+
+    //table
+    console.table(dogs);
+  </script>
+</body>
+</html>
