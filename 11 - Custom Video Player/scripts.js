@@ -30,7 +30,7 @@ function handleProgress() {
   progressBar.style.flexBasis = percent + "%"
 }
 function dragProgress(ev) {
-  const progresTime = ev.offsetX / this.offsetWidth * video.duration
+  const progresTime = (ev.offsetX / progress.offsetWidth) * video.duration;
   video.currentTime = progresTime
 }
 
