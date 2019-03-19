@@ -11,7 +11,7 @@ html {
 }
 
 *, *:before, *:after {
-  box-sizing: inherit; 
+  box-sizing: inherit;
 }
 
 svg {
@@ -76,4 +76,10 @@ h2 {
   padding: 10px;
   outline: 0;
   border: 1px solid rgba(0,0,0,0.1);
+}
+
+.wrapper button {
+  margin: 1em 0.25em 0.5em;
+  padding: 0.75em;
+  border: 1px solid rgba(0,0,0,0.2);
 }

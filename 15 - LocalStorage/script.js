@@ -35,6 +35,39 @@ function toggleComplete(ev) {
   localStorage.setItem('items', JSON.stringify(items))
 }
 
+function resetAll() {
+  if (items.length) {
+    items.forEach(item => {
+      item.completed = false
+    })
+    localStorage.setItem('items', JSON.stringify(items))
+    populateList(items, itemsList)
+  } else {
+    alert("No items to mark as Undone")
+  }
+}
+
+function completeAll() {
+  if (items.length) {
+    items.forEach(item => {
+      item.completed = true
+    })
+    localStorage.setItem('items', JSON.stringify(items))
+    populateList(items, itemsList)
+  } else {
+    alert("No items to mark as Done")
+  }
+}
+
+const resetBtn = document.createElement('button')
+resetBtn.textContent = "Clear All as Undone"
+document.querySelector('.wrapper').appendChild(resetBtn)
+const completeAllBtn = document.createElement('button')
+completeAllBtn.textContent = "Mark All as Done"
+document.querySelector('.wrapper').appendChild(completeAllBtn)
+
+resetBtn.addEventListener('click', resetAll)
+completeAllBtn.addEventListener('click', completeAll)
 addItems.addEventListener('submit', handleSubmit)
 itemsList.addEventListener('click', toggleComplete)
 
