@@ -11,11 +11,14 @@ function timer(seconds) {
   const endTime = now + seconds * 1000
   displayTimeLeft(seconds)
   displayEndTime(endTime)
+  document.body.classList.remove('warning')
 
   countdown = setInterval(() => {
     const secondsLeft = Math.round((endTime - Date.now()) / 1000)
     if (secondsLeft <= 0) {
       clearInterval(countdown)
+    } else if (secondsLeft < 10) {
+      document.body.classList.add('warning')
     }
     displayTimeLeft(secondsLeft);
   }, 1000);
